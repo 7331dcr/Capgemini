@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Divulga Tudo</title>
+        <link rel="shortcut icon" href="#">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <a href="{% url 'ad' %}">Cadastrar Anúncio</a> |
+                <a href="{% url 'client' %}">Cadastrar Cliente</a> |
+                <a href="{% url 'report' %}">Relatórios</a>
+            </ul>
+        </nav>
+        {% block body %}
+        {% endblock %}
+    </body>
+</html>
