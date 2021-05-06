@@ -1,5 +1,10 @@
 {% extends "sistema/layout.html" %}
 
 {% block body %}
-clients
+<br>
+<h2>CADASTRAR CLIENTE</h2>
+<form action="{% url 'client' %}" method="post">
+    <input autofocus autocomplete="off" type="text" name="name" placeholder="Nome">
+    <input type="submit" value="Cadastrar">
+</form>
 {% endblock %}
