@@ -1,7 +1,7 @@
 from django.db import models
 
 class Client(models.Model):
-    name = models.CharField(max_length=255, blank=False)
+    name = models.CharField(max_length=255, blank=False, null=False)
     created_on = models.DateTimeField(auto_now_add=True)
 
 class Ad(models.Model):
