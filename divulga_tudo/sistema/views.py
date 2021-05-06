@@ -14,13 +14,13 @@ def client(request):
         name = request.POST['name']
 
         if not name:
-            messages.error(request, f"Nome inválido.")
+            messages.error(request, f'Nome inválido.')
             return render(request, "sistema/client.html")
 
         # Checks if client's name is already registered
         try:
             Client.objects.get(name=name)
-            messages.error(request, f"Nome já cadastrado.")
+            messages.error(request, f'Cliente "{name}" já cadastrado.')
             return render(request, "sistema/client.html")
         except Client.DoesNotExist:
             pass
@@ -29,7 +29,7 @@ def client(request):
         try:
             new_client = Client(name=name)
             new_client.save()
-            messages.error(request, f"Cadastro efetuado com sucesso.")
+            messages.error(request, f'Cliente "{name}" cadastrado com sucesso.')
         except Exception:
             messages.error(request, f"Cadastro não efetuado.")
             return render(request, "sistema/client.html")
