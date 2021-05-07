@@ -4,6 +4,9 @@ class Client(models.Model):
     name = models.CharField(max_length=255, blank=False, null=False)
     created_on = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return f"(id: {self.id}) (name: {self.name})"
+
 class Ad(models.Model):
     name = models.CharField(max_length=255, blank=False)
     client = models.ForeignKey("Client", on_delete=models.CASCADE, related_name="ads")
@@ -14,3 +17,7 @@ class Ad(models.Model):
     investment_total = models.DecimalField(max_digits=14, decimal_places=2, blank=False)
     created_on = models.DateTimeField(auto_now_add=True)
     
+    def __str__(self):
+        return f"""(id: {self.id}) (name: {self.name}) (client: {self.client.name}) 
+        (start: {self.start_date}) (end: {self.end_date}) 
+        (investment/day: {self.investment_day})"""
