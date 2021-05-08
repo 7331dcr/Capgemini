@@ -1,7 +1,7 @@
 {% extends "sistema/layout.html" %}
 
 {% block body %}
-    <h2>CADASTRAR ANÚNCIO</h2>
+    <h1>CADASTRAR ANÚNCIO</h1>
     <form action="{% url 'ad' %}" method="post">
 
         <label for="name">Nome do anúncio:</label>
@@ -13,7 +13,7 @@
         <label for="client_id">Cliente:</label>
         <br>
         <select name="client_id">
-            {% for client in clients%}
+            {% for client in clients %}
                 <option value="{{client.id}}">{{client.name}}</option>
             {% empty %}
                 <option disabled value="">Não há clientes cadastrados.</option>
