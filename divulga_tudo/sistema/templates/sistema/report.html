@@ -1,5 +1,15 @@
 {% extends "sistema/layout.html" %}
 
 {% block body %}
-report
+    <h1>RELATÓRIO</h1>
+    <h2>Anúncio: {{ad.name}}</h2>
+    
+   Valor total investido no período: <strong>{{investment}}</strong>
+    <br>
+    Quantidade máxima de visualizações:  <strong>{{max_views}}</strong>
+    <br>
+    Quantidade máxima de cliques:  <strong>{{max_clicks}}</strong>
+    <br>
+    Quantidade máxima de compartilhamentos:  <strong>{{max_shares}}</strong>
+    <br>
 {% endblock %}

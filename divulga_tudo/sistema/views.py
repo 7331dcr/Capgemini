@@ -5,6 +5,7 @@ from django.urls import reverse
 import datetime
 
 from .models import Client, Ad
+from .util import max_clicks, max_shares, max_views
 
 
 def index(request):
@@ -89,7 +90,38 @@ def client(request):
     return render(request, "sistema/client.html")
 
 def report(request):
-    return render(request, "sistema/report.html")
+    if request.method == 'POST':
+
+        # Data validation
+        try:
+            start_date =  datetime.datetime.strptime(request.POST['start_date'], "%Y-%m-%d").date()
+            end_date = datetime.datetime.strptime(request.POST['end_date'], "%Y-%m-%d").date()
+        except ValueError:
+            messages.error(request, f'Data inválida.')
+            return HttpResponseRedirect(reverse('reports'))
+        
+        if end_date <= start_date:
+            messages.error(request, f'Data de término deve ser superior a de início.')
+            return HttpResponseRedirect(reverse('reports'))
+        
+        try:
+            ad = Ad.objects.get(pk=request.POST['ad_id'])
+        except Ad.DoesNotExist:
+            messages.error(request, f'Anúcio não encontrado.')
+            return HttpResponseRedirect(reverse('reports'))
+
+        delta = end_date - start_date
+        requested_days = delta.days
+        requested_investment = float(ad.investment_day) * float(requested_days)
+        views_invested = requested_investment * float(30)
+
+        return render(request, "sistema/report.html", {
+            'ad': ad,
+            'investment': "R$ {:,.2f}".format(requested_investment),
+            'max_clicks': max_clicks(views_invested),
+            'max_shares': max_shares(views_invested),
+            'max_views': max_views(views_invested)
+        })
 
 def reports(request):
     clients = Client.objects.all()
