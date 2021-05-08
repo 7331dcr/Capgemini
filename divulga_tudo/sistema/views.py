@@ -129,11 +129,16 @@ def reports(request):
     if request.method == 'POST':
         client = Client.objects.get(pk=request.POST['client_id'])
         ads = client.ads.all()
+        
+        empty = False
+        if not ads:
+            empty = True
 
         return render(request, "sistema/reports.html", {
             'clients': clients,
             'ads': ads,
-            'client': client
+            'client': client,
+            'empty': empty
         })
 
     return render(request, "sistema/reports.html", {
