@@ -6,4 +6,5 @@ urlpatterns = [
     path("ad", views.ad, name="ad"),
     path("client", views.client, name="client"),
     path("report", views.report, name="report"),
+    path("reports", views.reports, name="reports"),
 ]

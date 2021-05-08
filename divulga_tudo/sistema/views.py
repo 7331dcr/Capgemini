@@ -33,7 +33,7 @@ def ad(request):
             messages.error(request, f'Data inválida.')
             return HttpResponseRedirect(reverse('ad'))
         
-        if start_date <= end_date:
+        if end_date <= start_date:
             messages.error(request, f'Data de término deve ser superior a de início.')
             return HttpResponseRedirect(reverse('ad'))
 
@@ -90,3 +90,20 @@ def client(request):
 
 def report(request):
     return render(request, "sistema/report.html")
+
+def reports(request):
+    clients = Client.objects.all()
+
+    if request.method == 'POST':
+        client = Client.objects.get(pk=request.POST['client_id'])
+        ads = client.ads.all()
+
+        return render(request, "sistema/reports.html", {
+            'clients': clients,
+            'ads': ads,
+            'client': client
+        })
+
+    return render(request, "sistema/reports.html", {
+        'clients': clients
+    })

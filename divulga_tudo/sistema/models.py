@@ -19,5 +19,5 @@ class Ad(models.Model):
     
     def __str__(self):
         return f"""(id: {self.id}) (name: {self.name}) (client: {self.client.name}) 
-        (start: {self.start_date}) (end: {self.end_date}) 
-        (investment/day: {self.investment_day})"""
+        (start: {self.start_date}) (end: {self.end_date}) (days: {self.days})
+        (investment/day: {self.investment_day}) (investment_total: {self.investment_total})"""
