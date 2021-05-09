@@ -117,6 +117,8 @@ def report(request):
 
         return render(request, "sistema/report.html", {
             'ad': ad,
+            'start_date': start_date,
+            'end_date': end_date,
             'investment': "R$ {:,.2f}".format(requested_investment),
             'max_clicks': max_clicks(views_invested),
             'max_shares': max_shares(views_invested),
