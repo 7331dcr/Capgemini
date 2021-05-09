@@ -24,13 +24,13 @@
 
         <label for="start_date">Data de início:</label>
         <br>
-        <input type="date" name="start_date" placeholder="yyyy-mm-dd">
+        <input type="date" name="start_date" min="{% now 'Y-m-d' %}" placeholder="yyyy-mm-dd">
         <br>
         <br>
 
         <label for="end_date">Data de término:</label>
         <br>
-        <input type="date" name="end_date" placeholder="yyyy-mm-dd">
+        <input type="date" name="end_date" min="{% now 'Y-m-d' %}" placeholder="yyyy-mm-dd">
         <br>
         <br>
 
