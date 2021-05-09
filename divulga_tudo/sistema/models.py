@@ -5,7 +5,7 @@ class Client(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"(id: {self.id}) (name: {self.name})"
+        return f"(id: {self.id}) (name: {self.name}) (created_on: {self.created_on}"
 
 class Ad(models.Model):
     name = models.CharField(max_length=255, blank=False)
