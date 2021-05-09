@@ -1,4 +1,4 @@
-# Gerenciador de Anúncios - Divlga Tudo
+# Gerenciador de Anúncios - Divulga Tudo
 
 Projeto feito em Python(v. 3.8.6), utilizando Django(v. 3.1.5) como framework e com interface em HTML puro.
 
