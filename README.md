@@ -51,7 +51,3 @@ Acessado somente através da opção "Gerar relatório" em `/relatórios`, apres
 `/admin`
 
 Interface automática fornecida pelo Django. Permite visualizar e gerenciar de maneira fácil o database (CRUD).
-
-## Observações e decisões:
-
-- Interface do desafio feita inteiramente em HTML com o intúito de facilitar e simplificar seu uso nos dispositivos/browsers utilizados para acessar o gerenciador.
