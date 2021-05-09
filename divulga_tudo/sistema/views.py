@@ -122,6 +122,8 @@ def report(request):
             'max_shares': max_shares(views_invested),
             'max_views': max_views(views_invested)
         })
+    else:
+        return HttpResponseRedirect(reverse('reports'))
 
 def reports(request):
     clients = Client.objects.all()
